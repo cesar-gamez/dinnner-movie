@@ -34,7 +34,7 @@ function App() {
             .then((result) => {
                 setName(result.original_title)
                 setImg(result.poster_path)
-                console.log(movieId)
+                console.log(img)
             })
             .catch((error) => {
                 fetchRetry(10)
@@ -47,18 +47,20 @@ function App() {
         }}>
             <h2 style={{
             position: 'absolute', left: '2%', top: '1%',
-            }}>Dinner & Movie</h2>
-            <div style={{alignContent: 'center'}
+            }}>MovieFinder</h2>
+            <div style={{alignContent: 'center'}}
             >
-                <img src="http://api.themoviedb.org/3/movie/142808/images?api_key=bd5ddc60f5de8d9d668eb738d1c542aa"/>
+                <img style = {{
+                width: '200px', height: '250px', resizeMode: 'fill', borderRadius: '15px'
+                }}src={`https://image.tmdb.org/t/p/original${img}`}/>
                 <h1>{name}</h1>
                 <button onClick={fetchMovie} style={{
                 background: '#f8465d', borderRadius: '100px', color: 'white', border: '0',
                 width: '150px', height: '40px'
-                }}>Fetch</button>
+                }}>Fetch Movie</button>
             </div>
         </div>
     );
 }
-
+//
 export default App;
